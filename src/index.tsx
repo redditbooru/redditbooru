@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import {
   BrowserRouter as Router,
   Link,
   Switch,
   Route,
 } from 'react-router-dom';
+
+import { Home } from './pages/Home';
 
 import './index.scss';
 
@@ -16,6 +17,9 @@ ReactDOM.render((
     <h1>Redditbooru</h1>
     <Link to="/upload">Do it</Link>
     <Switch>
+      <Route path="/">
+        <Home />
+      </Route>
       <Route path="/upload">
         Upload
       </Route>
