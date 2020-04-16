@@ -29,9 +29,12 @@ export const ImageList = ({ images }: { images: Array<IPostData> }) => {
                 {image.score}
               </span>
             </div>
-            <h2 className="ImageItem__Title">
-              {image.title}
-            </h2>
+            <h2
+              className="ImageItem__Title"
+              dangerouslySetInnerHTML={{
+                __html: image.title
+              }}
+            />
           </li>
         );
       })}
