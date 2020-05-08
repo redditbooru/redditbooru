@@ -22,9 +22,15 @@ function calculateImageWidths(listWidth: number, images: Array<IPostData>): Arra
         return widthRatio + ratio;
       }, 0);
 
+
       const rowColumnWidths = imageRatios.map(ratio =>
           Math.round(ratio / widthRatioSum * 10000) / 100
       );
+
+      // Calculate out the total amount we came up with. Take anything over 100 off the last image
+      // so that all images line up nicely
+      const rowColumnWidthsTotal = rowColumnWidths.reduce((prev, curr) => prev + curr, 0);
+      rowColumnWidths[rowColumnWidths.length - 1] -= rowColumnWidthsTotal - 100;
 
       retVal = [ ...retVal, ...rowColumnWidths ];
       row = [];
@@ -64,6 +70,7 @@ export const ImageList = ({ images }: { images: Array<IPostData> }) => {
             style={{
               width: `${displaySize}%`
             }}
+            key={`ImageList__Item${image.imageId}`}
           >
             <div
               className="ImageItem__Wrap"
