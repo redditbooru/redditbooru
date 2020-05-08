@@ -4,9 +4,10 @@
 
   &__Item {
     float: left;
-    margin: 8px;
+    padding: 8px;
     transform: scale(1);
     transition: transform 150ms;
+    box-sizing: border-box;
 
     &:hover {
       transform: scale(1.02);
@@ -18,6 +19,7 @@
   &__Wrap {
     border-radius: 16px;
     background-size: cover;
+    background-position: center;
     box-shadow: 0 0 8px rgba(#000, $alpha: 0.4);
     position: relative;
   }
@@ -51,7 +53,8 @@
   &__Title {
     font: bold 18px/1 sans-serif;
     padding: 8px;
-    white-space: normal;
+    white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
